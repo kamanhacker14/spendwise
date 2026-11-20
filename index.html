@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SpendWise is a simple budgeting app to set a monthly budget and track your expenses.">
+  <title>SpendWise | Track Your Spending</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>SpendWise</h1>
+    <p>Set a budget. Log what you spend. Know where you stand.</p>
+  </header>
+
+  <main>
+    <section class="panel" aria-labelledby="budget-title">
+      <h2 id="budget-title">Monthly budget</h2>
+      <form id="budget-form" class="row">
+        <label for="budget-input" class="sr-only">Monthly budget in KES</label>
+        <input type="number" id="budget-input" min="1" step="any" placeholder="e.g. 20000" required>
+        <button type="submit">Save budget</button>
+      </form>
+    </section>
+
+    <section class="summary" aria-live="polite">
+      <div class="stat"><span class="stat-label">Budget</span><strong id="total-budget">KES 0</strong></div>
+      <div class="stat"><span class="stat-label">Spent</span><strong id="total-spent">KES 0</strong></div>
+      <div class="stat"><span class="stat-label">Remaining</span><strong id="remaining">KES 0</strong></div>
+    </section>
+
+    <div class="meter" aria-hidden="true"><div id="meter-fill"></div></div>
+    <p id="feedback" class="feedback">Set a budget to get started.</p>
+
+    <section class="panel" aria-labelledby="expense-title">
+      <h2 id="expense-title">Add an expense</h2>
+      <form id="expense-form" class="grid">
+        <div>
+          <label for="expense-name">Description</label>
+          <input type="text" id="expense-name" placeholder="e.g. Matatu fare" required>
+        </div>
+        <div>
+          <label for="expense-amount">Amount (KES)</label>
+          <input type="number" id="expense-amount" min="1" step="any" required>
+        </div>
+        <div>
+          <label for="expense-category">Category</label>
+          <select id="expense-category">
+            <option>Food</option>
+            <option>Transport</option>
+            <option>Rent</option>
+            <option>Airtime &amp; Data</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button type="submit">Add expense</button>
+      </form>
+      <p id="form-error" class="error" role="alert"></p>
+    </section>
+
+    <section class="panel" aria-labelledby="list-title">
+      <div class="list-head">
+        <h2 id="list-title">Expenses</h2>
+        <div>
+          <label for="filter" class="sr-only">Filter by category</label>
+          <select id="filter"><option value="All">All categories</option></select>
+        </div>
+      </div>
+      <ul id="expense-list" class="expense-list"></ul>
+      <p id="empty-state" class="empty">No expenses yet. Add your first one above.</p>
+      <button type="button" id="clear-all" class="secondary">Clear all data</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>SpendWise v1.0 &middot; Built by Kaman Jonathan &middot; Deployed with GitHub &amp; Netlify</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
